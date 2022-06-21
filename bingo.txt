@@ -1,0 +1,33 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Bingo {
+
+	public static void main(String[] args) {
+		
+		Random random = new Random();
+		 int numeroInteiroAleatorio = random.nextInt(99);
+		 
+		 	Scanner leitor = new Scanner(System.in);
+		 	 String resposta = leitor.next();
+		 	 
+		 	  	  	 
+			 
+		if ("r".equals(resposta)) {
+			
+			System.out.println("Número: " +
+			numeroInteiroAleatorio);
+				
+			
+			
+		}else if("x".equals(resposta)) {
+			
+			System.out.println("Fim do jogo!");
+		}
+		 
+		} 
+
+	
+	}
+
+
