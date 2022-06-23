@@ -1,33 +1,44 @@
+ //Bingo//       
+      
 import java.util.Random;
 import java.util.Scanner;
 
-public class Bingo {
+public class Teste {
 
-	public static void main(String[] args) {
+	public staxtic void main(String[] args) {
 		
-		Random random = new Random();
-		 int numeroInteiroAleatorio = random.nextInt(99);
-		 
-		 	Scanner leitor = new Scanner(System.in);
-		 	 String resposta = leitor.next();
-		 	 
-		 	  	  	 
-			 
-		if ("r".equals(resposta)) {
+		Scanner entrada = new Scanner(System.in);
+		Random numeroRandomico = new Random();
+		
+		String palavraDigitada = "";
+		
+		
+		boolean apertou = false;
+		
+		while(apertou == false) {
+			System.out.println("Informe uma letra:");
+			palavraDigitada = entrada.nextLine();
 			
-			System.out.println("Número: " +
-			numeroInteiroAleatorio);
+			if(palavraDigitada.equals("C")) {
+				int numeroGerado = numeroRandomico.nextInt(99);
+				System.out.println("Numero gerado: " + numeroGerado);
 				
+			}if(palavraDigitada.equals("c")) {
+				int numeroGerado = numeroRandomico.nextInt(99);
+				System.out.println("Numero gerado: " + numeroGerado);
 			
-			
-		}else if("x".equals(resposta)) {
-			
-			System.out.println("Fim do jogo!");
+			}else if(palavraDigitada.equals("X")) {
+				System.out.println("Saindo do jogo. Apertou o: " + palavraDigitada);
+				apertou = true;
+			}if(palavraDigitada.equals("x")) {
+				System.out.println("Saindo do jogo. Apertou o: " + palavraDigitada);
+				apertou = true;
+				
+			}
 		}
-		 
-		} 
+		
+		System.out.println("Aplicação finalizada com sucesso");
 
-	
 	}
-
-
+	
+}
