@@ -1,44 +1,40 @@
  //Bingo//       
       
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
-public class Teste {
+public class Bingo {
 
-	public static void main(String[] args) {
-		
-		Scanner entrada = new Scanner(System.in);
-		Random numeroRandomico = new Random();
-		
-		String palavraDigitada = "";
-		
-		
-		boolean apertou = false;
-		
-		while(apertou == false) {
-			System.out.println("Informe uma letra:");
-			palavraDigitada = entrada.nextLine();
-			
-			if(palavraDigitada.equals("C")) {
-				int numeroGerado = numeroRandomico.nextInt(99);
-				System.out.println("Numero gerado: " + numeroGerado);
-				
-			}if(palavraDigitada.equals("c")) {
-				int numeroGerado = numeroRandomico.nextInt(99);
-				System.out.println("Numero gerado: " + numeroGerado);
-			
-			}else if(palavraDigitada.equals("X")) {
-				System.out.println("Saindo do jogo. Apertou o: " + palavraDigitada);
-				apertou = true;
-			}if(palavraDigitada.equals("x")) {
-				System.out.println("Saindo do jogo. Apertou o: " + palavraDigitada);
-				apertou = true;
-				
-			}
-		}
-		
-		System.out.println("Aplicação finalizada com sucesso");
+  private static final Scanner entrada = new Scanner(System.in);
 
-	}
-	
+  public static void main(String[] args) {
+    Random random = new Random();
+
+    List<Integer> numeros = new ArrayList<>();
+    for (int numero = 1; numero <= 99; numero++) {
+      numeros.add(numero);
+    }
+
+    String letra;
+    boolean sair = false;
+    while (!sair) {
+      System.out.print("Informe uma letra: ");
+      letra = entrada.nextLine();
+
+      if (letra.equalsIgnoreCase("c")) {
+        int posicaoAleatoria = random.nextInt(numeros.size());
+        int numeroSorteado = numeros.remove(posicaoAleatoria);
+        System.out.println("Numero sorteado: " + numeroSorteado);
+
+        if (numeros.isEmpty()) {
+          System.out.println("Acabaram os números.\nSaindo do jogo.");
+          sair = true;
+        }    
+      } else if (letra.equalsIgnoreCase("x")) {
+        System.out.println("Apertou o: " + letra + "\nSaindo do jogo.");
+        sair = true;
+      }
+    }
+    System.out.println("Aplicação finalizada com sucesso");
+  }
 }
+	
