@@ -1,40 +1,77 @@
- //Bingo//       
-      
-import java.util.*;
+//Bingo
 
+import java.util.*;
+ 
 public class Bingo {
 
   private static final Scanner entrada = new Scanner(System.in);
 
   public static void main(String[] args) {
-    Random random = new Random();
-
+	Set<Integer> sorteados = new HashSet<>();
     List<Integer> numeros = new ArrayList<>();
     for (int numero = 1; numero <= 99; numero++) {
       numeros.add(numero);
-    }
-
+     }
+    
+    String sortreado = "";
     String letra;
     boolean sair = false;
     while (!sair) {
-      System.out.print("Informe uma letra: ");
+      System.out.print("Informe a letra: R/r para sortear os números \nou a palavra VER/ver, \npara visulizar os número já chamado!: ");
       letra = entrada.nextLine();
+     
 
-      if (letra.equalsIgnoreCase("c")) {
-        int posicaoAleatoria = random.nextInt(numeros.size());
-        int numeroSorteado = numeros.remove(posicaoAleatoria);
-        System.out.println("Numero sorteado: " + numeroSorteado);
+      if (letra.equalsIgnoreCase("r")) {
+    	System.out.println("Numero sorteado: " + sortreado);
+        sorteio(sorteados);
 
         if (numeros.isEmpty()) {
           System.out.println("Acabaram os números.\nSaindo do jogo.");
           sair = true;
         }    
+        
+        	          
       } else if (letra.equalsIgnoreCase("x")) {
         System.out.println("Apertou o: " + letra + "\nSaindo do jogo.");
         sair = true;
-      }
+        
+      }  else if(letra.equalsIgnoreCase("ver")) {
+    	  sorteados.forEach(a -> System.out.println(String.format("Número: %s", a)));
+    	  
+    	  
+        }if(sorteados.size() == 99) {
+            letra = "x";
+            System.out.println("Todos os números foram selecionados.");
+
+        }
     }
-    System.out.println("Aplicação finalizada com sucesso");
   }
+
+ private static void sorteio(Set<Integer> sorteados) {
+        Integer sortreado = sortearNumero();
+        
+        if(!sorteados.contains(sortreado)) {
+            sorteados.add(sortreado);
+            System.out.println(sortreado);
+        } else {
+            sorteio(sorteados);
+        }
+    }
+
+    private static Integer sortearNumero() {
+        Random sortedor =  new Random();
+        return sortedor.nextInt(99) + 1;
+    }
+
 }
+        
+    
+    
+  
+              
+  
+  
+  
+	
+	
 	
